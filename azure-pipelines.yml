@@ -71,7 +71,7 @@ stages:
               appName: $(webAppName)
               package: '$(Pipeline.Workspace)/drop/python.zip'
               runtimeStack: 'PYTHON|3.11'
-              startUpCommand: '''gunicorn --bind=0.0.0.0 --timeout 600 app'''
+              startUpCommand: '''gunicorn --bind=0.0.0.0 --timeout 600 app:app'''
              
             
 
