@@ -41,12 +41,13 @@ stages:
               archiveFile: '$(Build.ArtifactStagingDirectory)/python.zip'
               replaceExistingArchive: true
 
-          - task: PublishBuildArtifacts@1
-            displayName: Publish Artifact
+
+          - task: PublishPipelineArtifact@1
             inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)/python.zip'
-              ArtifactName: 'drop'
+              targetPath: '$(Build.ArtifactStagingDirectory)/python.zip'
+              artifact: 'drop'
               publishLocation: 'pipeline'
+          
 
 
   - stage: Deploy
@@ -61,7 +62,7 @@ stages:
             inputs:
               buildType: 'current'
               artifactName: 'drop'
-              targetPath: '$(Pipeline.Workspace)/drop/python.zip'
+              targetPath: '$(Pipeline.Workspace)/drop/'
           
           - task: AzureWebApp@1
             displayName: Deploy to Azure Web App
