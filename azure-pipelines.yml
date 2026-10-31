@@ -61,7 +61,7 @@ stages:
             inputs:
               buildType: 'current'
               artifactName: 'drop'
-              targetPath: '$(Pipeline.Workspace)/drop'
+              targetPath: '$(Pipeline.Workspace)/drop/python.zip'
           
           - task: AzureWebApp@1
             displayName: Deploy to Azure Web App
